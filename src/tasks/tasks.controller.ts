@@ -10,13 +10,13 @@ export class TasksController {
     constructor(private taskService: TasksService){}
     
     @Get()
-    getTasks(): Task[]{
+    getTasks(): Promise<Task[]>{
         return this.taskService.getTasks();
     }
     
     @Get(':idTask')
-    getTask(@Param('idTask') idTask): Task{
-        return this.taskService.getTask(parseInt(idTask));
+    getTask(@Param('idTask') idTask: string){
+        return this.taskService.getTask(idTask);
     }
 
     @Post()
